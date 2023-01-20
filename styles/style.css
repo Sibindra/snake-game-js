@@ -48,4 +48,8 @@
 
 .food{
     background-color: purple;
+
+    /* food size */
+    height: 3vmin;
+    width: 3vmin;
 }

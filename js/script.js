@@ -1,6 +1,10 @@
 // co-ordinates
 let direction = { x: 0, y: 0 };
 
+// element
+const container=document.querySelector('.container');
+// console.log(container);
+
 // game sounds
 const bgm = new Audio("sounds/bgm.mp3");
 const foodSound = new Audio("sounds/food.mp3");
@@ -20,18 +24,37 @@ function main(currentTime) {
     window.requestAnimationFrame(main); //recursive such that the window gets reloaded in infinite loop
 
     // controlling fps by less than 2 per second
-    if ((currentTime - prevRenderTime) / 1000 < 2) {
+    if ((currentTime - prevRenderTime) / 1000 < 1/speed) {
         return;
     }
 
     prevRenderTime = currentTime;
-    // gameEngine();
+    gameEngine();
 
     console.log(currentTime);
 }
 
 function gameEngine() {
     // updating snake variable
+
+    container.innnerHTML = "";
+
+    snakeArr.forEach((e, index) => {
+        // create a new element 
+        newSnakeElement = document.createElement('div');
+        // set it's size
+        newSnakeElement.style.gridRowStart = e.y;
+        newSnakeElement.style.gridColumnStart = e.x;
+
+
+        // set a classname for new element
+        newSnakeElement.classList.add('food')
+
+        // append as a child of container element
+        container.appendChild(newSnakeElement);
+        // console.log(newSnakeElement);
+    });
+
     // render the snake and food
 }
 
