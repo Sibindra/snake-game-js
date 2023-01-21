@@ -86,6 +86,7 @@ function gameEngine() {
         foodSound.play();
         score += 1;
         // console.log(score);
+        scoreContainer.innerHTML = score;
 
         if (score > hiScore) {
             highScoreVal = score;
@@ -158,8 +159,6 @@ if (hiScore === null) {
     let highScoreVal = JSON.parse(hiScore);
     highScoreContainer.innerHTML = highScoreVal;
 }
-
-scoreContainer.innerHTML = score;
 
 // FIXME:
 window.requestAnimationFrame(main);
