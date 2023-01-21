@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500&display=swap");
 
 * {
     margin: 0px;
@@ -15,27 +15,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .container {
     border-radius: 4px;
-    outline: none;
 
     background-color: whitesmoke;
-    
-  
 
-    width: 70vw;
-    height: 70vh;
-
+    width: 70vmin;
+    height: 70vmin;
 
     display: grid;
-    grid-template-rows: repeat(18,1fr);
-    grid-template-columns: repeat(18,1fr);
+    grid-template-rows: repeat(18, 1fr);
+    grid-template-columns: repeat(18, 1fr);
 }
-
-
 
 .scoreContainer {
     padding: 5vmin;
@@ -43,22 +36,26 @@
     border-radius: 4px;
     text-align: center;
 
-
     font-size: 1.5rem;
 }
 
-.head{
+.head {
     background-color: red;
+
+    /* height: 3vmin;
+    width: 3vmin; */
 }
 
-.snake{
+.snake {
     background-color: green;
+
+    /* height: 3vmin;
+    width: 3vmin; */
 }
 
-.food{
+.food {
     background-color: yellow;
 
-    /* food size */
-    height: 3vmin;
-    width: 3vmin;
+    /* height: 3vmin;
+    width: 3vmin; */
 }
