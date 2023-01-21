@@ -27,10 +27,21 @@ let food = { x: 3, y: 10 };
 
 let score = 0;
 
+
 // main
 function main(currentTime) {
     // game loop
     window.requestAnimationFrame(main); //recursive such that the window gets reloaded in infinite loop
+    
+    // increase speed every time score changes by 5
+    let difficulty = 5;
+    if (score > difficulty) {
+        speed += 1;
+        difficulty += 5;
+    }
+
+    // console.log("speed: ", speed);
+    // console.log("difficulty:", difficulty);
 
     // controlling fps by less than 2 per second
     if ((currentTime - prevRenderTime) / 1000 < 1 / speed) {
