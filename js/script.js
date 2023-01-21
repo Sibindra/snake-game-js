@@ -33,17 +33,17 @@ function main(currentTime) {
     // game loop
     window.requestAnimationFrame(main); //recursive such that the window gets reloaded in infinite loop
     
-    // increase speed every time score changes by 5
-    let difficulty = 5;
+    // increase speed every time score changes by 2
+    let difficulty = 2;
     if (score > difficulty) {
-        speed += 0.125;
-        difficulty += 5;
+        speed += 0.0125;
+        difficulty += 2;
     }
 
     // console.log("speed: ", speed);
     // console.log("difficulty:", difficulty);
 
-    // controlling fps by less than 2 per second
+    // controlling fps 
     if ((currentTime - prevRenderTime) / 1000 < 1 / speed) {
         return;
     }
@@ -54,8 +54,8 @@ function main(currentTime) {
     // console.log(currentTime);
 }
 
-// COLLIDE
 
+// COLLIDE
 function isCollide(snake) {
     // collide with snake
     for (let i = 1; i < snakeArr.length; i++) {
@@ -64,16 +64,12 @@ function isCollide(snake) {
         }
     }
     // collide with container wall
-    if (
-        snakeArr[0].x >= 18 ||
-        (snakeArr[0].x <= 0 && snakeArr[0].y >= 18) ||
-        snakeArr[0].y <= 0
-    ) {
+    if (snakeArr[0].x >= 18 || snakeArr[0].x < 0 || snakeArr[0].y >= 18 || snakeArr[0].y < 0 ) {
         return true;
     }
-
     return false;
 }
+
 
 function gameEngine() {
     // if snake colllides
@@ -83,8 +79,9 @@ function gameEngine() {
 
         direction = { x: 0, y: 0 };
 
-        alert("Game Over! Press any key to try again");
-
+        alert("Game Over!");
+        
+        speed=5;
         snakeArr = [{ x: 13, y: 15 }];
 
         bgm.play();
@@ -170,6 +167,8 @@ if (hiScore === null) {
     let highScoreVal = JSON.parse(hiScore);
     highScoreContainer.innerHTML = highScoreVal;
 }
+
+
 
 // FIXME:
 window.requestAnimationFrame(main);
