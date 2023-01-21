@@ -36,7 +36,7 @@ function main(currentTime) {
     // increase speed every time score changes by 5
     let difficulty = 5;
     if (score > difficulty) {
-        speed += 1;
+        speed += 0.125;
         difficulty += 5;
     }
 
