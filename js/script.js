@@ -2,6 +2,9 @@
 // snake veleocity
 let direction = { x: 0, y: 0 };
 
+const scoreContainer = document.querySelector(".score");
+const highScoreContainer = document.querySelector(".hiScore");
+
 // element
 const container = document.querySelector(".container");
 // console.log(container);
@@ -82,6 +85,14 @@ function gameEngine() {
     if (snakeArr[0].y === food.y && snakeArr[0].x === food.x) {
         foodSound.play();
         score += 1;
+        // console.log(score);
+
+        if (score > hiScore) {
+            highScoreVal = score;
+            localStorage.setItem("hiScore", JSON.stringify(highScoreVal));
+            highScoreContainer.innerHTML = highScoreVal;
+        }
+
         snakeArr.unshift({
             x: snakeArr[0].x + direction.x,
             y: snakeArr[0].y + direction.y,
@@ -136,13 +147,28 @@ function gameEngine() {
     container.appendChild(newFoodElement);
 }
 
+// high score val
+
+let hiScore = localStorage.getItem("hiScore");
+
+if (hiScore === null) {
+    let highScoreVal = 0;
+    localStorage.setItem("hiScore", JSON.stringify(highScoreVal));
+} else {
+    let highScoreVal = JSON.parse(hiScore);
+    highScoreContainer.innerHTML = highScoreVal;
+}
+
+scoreContainer.innerHTML = score;
+
 // FIXME:
 window.requestAnimationFrame(main);
 
 // key event handlers
 window.addEventListener("keydown", (e) => {
+    bgm.play();
     // start the game on any key press
-    direction = { x: 0, y: 1 };
+    direction = { x: -1, y: 0 };
     moveSound.play();
 
     // key switch case
